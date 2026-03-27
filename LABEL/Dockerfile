@@ -2,4 +2,6 @@
 FROM almalinux:9
 LABEL COURSE="Docker" \
       TRAINER="SivaKumar Reddy" \
-      DURATION="4 Months"
+      DURATION="4 Months" \
+      AUTHOR="joindevops"
+
