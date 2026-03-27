@@ -4,6 +4,6 @@ ARG COURSE="Docker" \
     TRAINER="SivaKumar Reddy" \
     DURATION="4 Months" \
     AUTHOR="joindevops"
-RUN echo "Trainer is: ${TRAINER}"
+RUN echo "Trainer is: ${TRAINER}, version is: ${version}"
 CMD ["sleep","200"]
 
