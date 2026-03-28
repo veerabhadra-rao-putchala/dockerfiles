@@ -13,9 +13,10 @@ ADD "https://download.splunk.com/products/splunk/releases/10.2.0/linux/splunk-10
 
 # Install the rpm package and enable systemd-managed service 
 RUN rpm -ivh /opt/splunk-10.2.0-d749cb17ea65.x86_64.rpm
-#RUN ${SPLUNK_HOME}/bin/splunk enable boot-start -systemd-managed 1 -user splunk -group splunk
-RUN ${SPLUNK_HOME}/bin/splunk start --accept-license --answer-yes --no-prompt --run-as-root
 RUN chown -R splunk:splunk /opt/splunk
 
 # Expose management port (default: 8089)
+COPY entrypoint.sh /sbin/entrypoint.sh
 EXPOSE 8000 8089
+
+CMD ["/sbin/entrypoint.sh"]
