@@ -17,6 +17,8 @@ RUN chown -R splunk:splunk /opt/splunk
 
 # Expose management port (default: 8089)
 COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod +x /sbin/entrypoint.sh
+
 EXPOSE 8000 8089
 
 CMD ["/sbin/entrypoint.sh"]
