@@ -6,7 +6,7 @@ RUN dnf install -y procps && dnf clean all
 
 # Set environment variables for automated setup
 ENV SPLUNK_HOME=/opt/splunk \
-	SPLUNK_PASSWORD=changeme \
+	SPLUNK_PASSWORD=changeme
 	
 # Download splunkfowarder package from splunk site
 ADD "https://download.splunk.com/products/splunk/releases/10.2.0/linux/splunk-10.2.0-d749cb17ea65.x86_64.rpm" /opt/
