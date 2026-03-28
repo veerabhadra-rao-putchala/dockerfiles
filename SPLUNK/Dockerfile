@@ -1,6 +1,9 @@
 # Install redhat9 base OS
 FROM redhat/ubi9
 
+# Install required dependencies
+RUN dnf install -y procps && dnf clean all
+
 # Set environment variables for automated setup
 ENV SPLUNK_START_ARGS=--accept-license \
     SPLUNK_PASSWORD=changeme123 \
