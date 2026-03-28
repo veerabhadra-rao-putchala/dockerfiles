@@ -2,7 +2,7 @@
 FROM redhat/ubi9
 
 # Install required dependencies
-RUN dnf install -y procps && dnf clean all
+RUN dnf install -y procps && dnf clean all && dnf install python
 
 # Set environment variables for automated setup
 ENV SPLUNK_HOME=/opt/splunk \
