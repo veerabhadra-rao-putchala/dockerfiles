@@ -1,24 +1,6 @@
-# Install redhat9 base OS
-FROM redhat/ubi9
-
-# Install required dependencies
-RUN dnf install -y procps && dnf clean all
-
+FROM splunk/splunk:10.2-rhel9
 # Set environment variables for automated setup
-ENV SPLUNK_HOME=/opt/splunk
-	
-	
-# Download splunkfowarder package from splunk site
-ADD "https://download.splunk.com/products/splunk/releases/10.2.0/linux/splunk-10.2.0-d749cb17ea65.x86_64.rpm" /opt/
-
-# Install the rpm package and enable systemd-managed service 
-RUN rpm -ivh /opt/splunk-10.2.0-d749cb17ea65.x86_64.rpm
-RUN chown -R splunk:splunk /opt/splunk
-
-# Expose management port (default: 8089)
-COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod +x /sbin/entrypoint.sh
-
-EXPOSE 8000 8089
-
-CMD ["/sbin/entrypoint.sh"]
+ENV SPLUNK_START_ARGS=--accept-license \
+    SPLUNK_GENERAL_TERMS=--accept-sgt-current-at-splunk-com
+    SPLUNK_PASSWORD=changeme \
+    SPLUNK_USER=splunk
